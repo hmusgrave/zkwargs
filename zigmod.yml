@@ -1,0 +1,6 @@
+id: 4s1annutbew1xkdzx5p2qlyss5344v11xxorvxwu2xkxwvln
+name: zkwargs
+main: src/main.zig
+license: AGPL-3.0
+description: keyword-only arguments for zig
+dependencies:
