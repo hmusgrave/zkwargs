@@ -79,7 +79,13 @@ pub fn Options(comptime O: type) type {
         pub fn parse(args: anytype) Parsed(@TypeOf(args)) {
             var rtn: Parsed(@TypeOf(args)) = undefined;
             inline for (@typeInfo(@TypeOf(args)).Struct.fields) |field| {
-                @field(rtn, field.name) = @field(args, field.name);
+                inline for (@typeInfo(@TypeOf(rtn)).Struct.fields) |rtn_field| {
+                    if (comptime std.mem.eql(u8, rtn_field.name, field.name)) {
+                        if (comptime rtn_field.default_value == null) {
+                            @field(rtn, field.name) = @field(args, field.name);
+                        }
+                    }
+                }
             }
             return rtn;
         }
