@@ -121,7 +121,7 @@ pub fn allowed_types(comptime MaybeT: ?type, comptime field_name: anytype, compt
 // a complicated/asymmetric options description, but
 // I want to demonstrate a few of the features
 const RangeOpt = struct {
-    fn start(comptime MaybeT: ?type) ?type {
+    pub fn start(comptime MaybeT: ?type) ?type {
         // Arbitrary type-checking
         allowed_types(MaybeT, "start", .{ usize, comptime_int });
 
@@ -129,12 +129,12 @@ const RangeOpt = struct {
         return Default(0);
     }
 
-    fn stop(comptime _: ?type) type {
+    pub fn stop(comptime _: ?type) type {
         // Default values have whichever type you pass in
         return Default(@as(?comptime_int, null));
     }
 
-    fn step(comptime MaybeT: ?type) ?type {
+    pub fn step(comptime MaybeT: ?type) ?type {
         // Easy to support required arguments
         //
         // Alternatively, you could have just made MaybeT
@@ -153,7 +153,7 @@ const RangeOpt = struct {
     // "range" implementation, only provided to demonstrate
     // the ability to choose how input arguments will be
     // interpreted.
-    fn max_count(comptime _: ?type) ?type {
+    pub fn max_count(comptime _: ?type) ?type {
         // User-provided value will be coerced to a usize
         return usize;
     }
