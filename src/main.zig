@@ -31,9 +31,9 @@ pub fn Options(comptime O: type) type {
                             comptime var field = _field;
                             field.field_type = T;
                             field.alignment = @alignOf(T);
-                            if (field.default_value) |dv| {
-                                const prev = @ptrCast(*const _field.field_type, dv);
-                                field.default_value = default_pointer(T, prev.*);
+                            if (field.default_value) |_| {
+                                const prev = @field(@as(ArgT, undefined), field.name);
+                                field.default_value = default_pointer(T, prev);
                             }
                             fields[kept] = field;
                             kept += 1;
