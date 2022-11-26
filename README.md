@@ -22,12 +22,25 @@ Choose your favorite method for vendoring this code into your repository. I've b
 
 ## Examples
 
+There's a nice real-world example in [zshuffle](https://github.com/hmusgrave/zshuffle#examples). The API's behavior is able to easily branch at comptime based on whether an allocator is present or not. Here's a snippet of that example (note how the return type changes based on the optional arguments):
+
+```zig
+// You can shuffle it in-place
+shuffle(rand, data, .{});
+
+// Or else you can shuffle into a new result buffer
+var shuffled = try shuffle(rand, data, .{.allocator = allocator});
+defer allocator.free(shuffled);
+```
+
+Otherwise, here's an example that's less applicable to the real world as written but which shows off a little more how you might write an API using zkwargs and which features are available.
+
 ```zig
 const zkwargs = @import("zkwargs");
 
 // A real "range" function probably wouldn't need such
 // a complicated/asymmetric options description, but
-// I want to demonstrate a few of the features
+// I want to demonstrate a few of the available features
 const RangeOpt = struct {
     pub fn start(comptime MaybeT: ?type) ?type {
         // Arbitrary type-checking
