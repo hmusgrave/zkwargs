@@ -29,7 +29,7 @@ pub fn Options(comptime O: type) type {
                     inline for (@typeInfo(ArgT).Struct.fields) |_field| {
                         if (std.mem.eql(u8, d.name, _field.name)) {
                             comptime var field = _field;
-                            field.field_type = T;
+                            field.type = T;
                             field.alignment = @alignOf(T);
                             if (field.default_value) |_| {
                                 const prev = @field(@as(ArgT, undefined), field.name);
@@ -46,7 +46,7 @@ pub fn Options(comptime O: type) type {
                         if (is_default(DT)) {
                             fields[kept] = StructField{
                                 .name = d.name,
-                                .field_type = @TypeOf(DT.default),
+                                .type = @TypeOf(DT.default),
                                 .default_value = &DT.default,
                                 .is_comptime = true,
                                 .alignment = @alignOf(@TypeOf(DT.default)),
@@ -174,9 +174,8 @@ fn range_sum(data: anytype, _kwargs: anytype) @TypeOf(data[0]) {
     if (@hasField(@TypeOf(kwargs), "max_count")) {
         stop = @min(stop, kwargs.start + kwargs.max_count * kwargs.step);
     }
-    while (i < stop) : (i += kwargs.step) {
+    while (i < stop) : (i += kwargs.step)
         total += data[i];
-    }
     return total;
 }
 
