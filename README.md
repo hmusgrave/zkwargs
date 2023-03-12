@@ -18,7 +18,32 @@ This is mostly just having fun playing with Zig's metaprogramming. Compared with
 
 ## Installation
 
-Choose your favorite method for vendoring this code into your repository. I've been using [zigmod](https://github.com/nektro/zigmod), and it's pretty painless. I also generally like [git-subrepo](https://github.com/ingydotnet/git-subrepo), copy-paste is always a winner, and whenever the official package manager is up we'll be there too.
+Copy-paste or [git-subrepo](https://github.com/ingydotnet/git-subrepo) or whatever. Also, ZIG HAS A PACKAGE MANAGER NOW!!! Use it with something like the following.
+
+```zig
+// build.zig.zon
+.{
+    .name = "foo",
+    .version = "0.0.0",
+    .dependencies = .{
+        .zkwargs = .{
+	   .url = "https://github.com/hmusgrave/zkwargs/archive/refs/tags/z11-0.0.0.tar.gz",
+            .hash = "1220382447b50be7f14b48d17baf0286c1adb297f6edf4a4c00b008841c07cadb00a",
+        },
+    },
+}
+```
+
+```zig
+// build.zig
+const zkwargs_pkg = b.dependency("zkwargs", .{
+    .target = target,
+    .optimize = optimize,
+});
+const zkwargs_mod = zkwargs_pkg.module("zkwargs");
+lib.addModule("zkwargs", zkwargs_mod);
+main_tests.addModule("zkwargs", zkwargs_mod);
+```
 
 ## Examples
 
