@@ -27,7 +27,7 @@ Copy-paste or [git-subrepo](https://github.com/ingydotnet/git-subrepo) or whatev
     .version = "0.0.0",
     .dependencies = .{
         .zkwargs = .{
-	   .url = "https://github.com/hmusgrave/zkwargs/archive/refs/tags/z11-0.0.0.tar.gz",
+	    .url = "https://github.com/hmusgrave/zkwargs/archive/refs/tags/z11-0.0.0.tar.gz",
             .hash = "1220382447b50be7f14b48d17baf0286c1adb297f6edf4a4c00b008841c07cadb00a",
         },
     },
