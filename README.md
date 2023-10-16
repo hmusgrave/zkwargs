@@ -126,3 +126,6 @@ test "doesn't crash" {
     try expectEqual(@as(u8, 3), range_sum(data, .{ .start = 1, .stop = 3, .step = 1 }));
 }
 ```
+
+## Status
+Working and builds for Zig 0.11 and 0.12. There isn't much in the way of marketing or other niceties other than this README and reading the source (there also isn't much source, so that ought to be easy).
