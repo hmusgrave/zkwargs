@@ -18,8 +18,6 @@ This is mostly just having fun playing with Zig's metaprogramming. Compared with
 
 ## Installation
 
-Copy-paste or [git-subrepo](https://github.com/ingydotnet/git-subrepo) or whatever. Also, ZIG HAS A PACKAGE MANAGER NOW!!! Use it with something like the following.
-
 ```zig
 // build.zig.zon
 .{
@@ -27,8 +25,8 @@ Copy-paste or [git-subrepo](https://github.com/ingydotnet/git-subrepo) or whatev
     .version = "0.0.0",
     .dependencies = .{
         .zkwargs = .{
-	    .url = "https://github.com/hmusgrave/zkwargs/archive/refs/tags/z11-0.0.0.tar.gz",
-            .hash = "1220382447b50be7f14b48d17baf0286c1adb297f6edf4a4c00b008841c07cadb00a",
+            .url = "https://github.com/hmusgrave/zkwargs/archive/4b23becf731ecaac1f29d629943d11b23c7802e8.tar.gz",
+            .hash = "1220f6fd467fd42cd5ec98a360caacdcda9d3b9c3557fdcdef285cabbdee3c7c79dc",
         },
     },
 }
