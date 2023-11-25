@@ -166,7 +166,7 @@ const RangeOpt = struct {
 };
 
 fn range_sum(data: anytype, _kwargs: anytype) @TypeOf(data[0]) {
-    var kwargs = Options(RangeOpt).parse(_kwargs);
+    const kwargs = Options(RangeOpt).parse(_kwargs);
 
     var total: @TypeOf(data[0]) = 0;
     var i: usize = kwargs.start;
@@ -180,7 +180,7 @@ fn range_sum(data: anytype, _kwargs: anytype) @TypeOf(data[0]) {
 }
 
 test "doesn't crash" {
-    var data = [_]u8{ 0, 1, 2, 3, 4, 5 };
+    const data = [_]u8{ 0, 1, 2, 3, 4, 5 };
     try expectEqual(@as(u8, 15), range_sum(data, .{ .step = 1 }));
     try expectEqual(@as(u8, 6), range_sum(data, .{ .step = 2 }));
     try expectEqual(@as(u8, 2), range_sum(data, .{ .step = 2, .max_count = 2 }));
