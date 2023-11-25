@@ -25,8 +25,8 @@ This is mostly just having fun playing with Zig's metaprogramming. Compared with
     .version = "0.0.0",
     .dependencies = .{
         .zkwargs = .{
-            .url = "https://github.com/hmusgrave/zkwargs/archive/4b23becf731ecaac1f29d629943d11b23c7802e8.tar.gz",
-            .hash = "1220f6fd467fd42cd5ec98a360caacdcda9d3b9c3557fdcdef285cabbdee3c7c79dc",
+            .url = "https://github.com/hmusgrave/zkwargs/archive/f73c42cedcfc14a84d44d8f79cfd92e3f60d2a31.tar.gz",
+            .hash = "1220398c2b04b8d5320a97868cc017776216f1910889b6b2413853044eb5d6057238",
         },
     },
 }
